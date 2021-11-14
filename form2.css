@@ -1,0 +1,234 @@
+.heading {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+}
+
+.heading {
+    font-family: 'Zilla Slab Highlight', cursive;
+    width: 50%;
+}
+
+
+#form-container {
+    border: 2px solid black;
+    margin: 2% 10%;
+    padding: 1%;
+}
+
+.admission-heading {
+    /* border: 1px solid red; */
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.name-table .namer {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.name-input {
+    border: 1px solid black;
+}
+
+.name-input input{
+    width: 100%;
+    border: none;
+}
+
+.name-input input:focus {
+    outline: none;
+}
+
+.passport-space {
+    border: 1px solid black;
+    width: 80%;
+    height: 100%;
+}   
+
+.passport-space {
+    font-style: italic;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.personal-info-input input {
+    border: none;
+    width: 100%;
+}
+
+.personal-info-input input:focus {
+    outline: none;
+}
+
+.personal-info-item {
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: space-around;
+}
+
+.personal-info-input {
+    /* border: 1px solid red; */
+    border-bottom: 2px solid grey;
+}
+
+.parents-table .namer {
+    border: 1px solid black;
+}
+
+.parent-name-input {
+    border: 1px solid black;
+}
+
+.parent-name-input input {
+    width: 80%;
+    border: none;
+}
+
+.parent-name-input input:focus {
+    outline: none;
+}
+
+.parent-occupation-input {
+    border: 1px solid black;
+}
+
+.parent-occupation-input input {
+    width: 73%;
+    border: none;
+}
+
+.parent-occupation-input input:focus {
+    outline: none;
+}
+
+.branch-item {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.branch-item select {
+    margin-left: 10%;
+}
+
+.jee-input {
+    border: 1px solid black;
+}
+
+.jee-input input {
+    width: 100%;
+    border: none;
+}
+
+.jee-input input:focus {
+    outline: none;
+}
+
+.jee-text {
+    border: 1px solid black;
+}
+
+.fee-amount {
+    display: flex;
+    justify-content: center;
+}
+
+.fee-payment-row .detail input {
+    width: 80%;
+    border: none;
+}
+
+.fee-payment-row .detail {
+    border: 1px solid black;
+}
+
+.fee-payment-row .detail input:focus {
+    outline: none;
+}
+
+.hostel-col{
+    border: 1px solid black;
+}
+
+.hostel-col-up {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.hostel-col-right {
+    border-right: 1px solid black;
+}
+
+.hostel-detail-col {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.address-with-text {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.address-box {
+    border: 1px solid black;
+}
+
+.address-box input {
+    margin-left: 5px;
+    border: none;
+    width: 75%;
+}
+
+.address-box input:focus {
+    outline: none;
+}
+
+.education-row input {
+    border: none;
+    width: 80%;
+}
+
+.education-row input:focus {
+    outline: none;
+}
+
+.edu-col {
+    border: 1px solid black;
+}
+
+.disease-input {
+    width: 100%;
+    border-bottom: 1px solid grey;
+}
+
+.disease-input input {
+    width: 100%;
+    border: none;
+}
+
+.disease-input input:focus {
+    outline: none;
+}
+
+.declaration-box {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.jee-item {
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.jee-item input {
+    width: 60%;
+}
+
+.jee-input-row {
+    display: flex;
+    justify-content: flex-start;
+}

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./form2.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab+Highlight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Oi&family=Rampart+One&display=swap" rel="stylesheet">
+    <title>Admission Web Portal</title>
+</head>
+<body>
+    <form action="./handlers.php" method="POST">
+        <div class="container-fluid">
+            
+            <!-- <div class="row heading">
+                <text style="text-align: center;">Sample Performa</text>
+            </div> -->
+
+            <div style="display: inline-block">
+                <img style="margin: 0px 80px" height="135px" width="135px" src="data:image/png;base64,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">
+            </div>
+            <div style="width: 750px; display: inline-block" class="heading">
+                <h1 style="margin: 50px; font-size: 60px">Admission Web Portal</h1>
+            </div>
+            <hr>
+            </br>
+
+            <div class="row" id="form-container">
+                <div class="col-sm-12 col-md-12">
+                    <div class="row details">
+                        <div class="col-sm-12 col-md-10 name">
+
+                            <div class="row admission-heading">
+                                <div class="col-sm-12 col-md-12">
+                                    <text>APPLICATION FORM FOR ADMISSION TO B.TECH PROGRAMME 2019-20</text>
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                                    <text>Enter Details from here onwards (ALL ENTRIES IN CAPITAL LETTERS)</text>
+                                </div>
+                            </div>
+
+                            </br>
+                            <div class="row name-table">
+
+                                <!-- name in english  -->
+                                <div class="col-sm-12 col-md-3 namer">
+                                    <text style="font-weight: bold">Name in English: </text>
+                                </div>
+                                <div class="col-sm-12 col-md-9 name-input">
+                                    <input type="text" name="nameenglish" class="nameenglish">
+                                </div>
+
+                                <!-- name in hindi  -->
+                                <div class="col-sm-12 col-md-3 namer">
+                                    <text  style="font-weight: bold">Name in Hindi: </text>
+                                </div>
+                                <div class="col-sm-12 col-md-9 name-input">
+                                    <input type="text" name="namehindi" class="namehindi">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-2 passport">
+                            <div class="passport-space">
+                                <text class="passport-text">Paste PP size color Photo</text>
+                            </div>
+                        </div>
+                    </div>  
+
+                    </br>   
+                    <div class="row personal-info">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 personal-info-item">
+                                    <text style="font-weight: bold">Gender M/F : </text>
+                                    <div class="personal-info-input">
+                                        <input type="text" name="gender">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 personal-info-item">
+                                    <text style="font-weight: bold">Blood Group : </text>
+                                    <div class="personal-info-input">
+                                        <input type="text" name="bloodGroup">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 personal-info-item">
+                                    <text style="font-weight: bold">Date of Birth : </text>
+                                    <div class="personal-info-input">
+                                        <input type="date" name="dob">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 personal-info-item">
+                                    <text style="font-weight: bold">Mobile No.1 : </text>
+                                    <div class="personal-info-input">
+                                        <input type="text" name="mobile1">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 personal-info-item">
+                                    <text style="font-weight: bold">Mobile No.2: </text>
+                                    <div class="personal-info-input">
+                                        <input type="text" name="mobile2">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 personal-info-item">
+                                    <text style="font-weight: bold">Email-Id : </text>
+                                    <div class="personal-info-input">
+                                        <input type="email" name="emailid">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 personal-info-item">
+                                    <text style="font-weight: bold">Aadhar No. : </text>
+                                    <div class="personal-info-input">   
+                                        <input type="text" name="aadhar">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </br>
+
+                    <div class="row parents-table">
+                        <div class="col-sm-12 col-md-2 namer">
+                            <text style="font-weight: bold">Father's Name </text>
+                        </div>
+                        <div class="col-sm-12 col-md-5 parent-name-input">
+                            <text>Shri. : </text>
+                            <input type="text" name="fatherName" class="fatherName">
+                        </div>
+                        <div class="col-sm-12 col-md-5 parent-occupation-input">
+                            <text>Occupation : </text>
+                            <input type="text" name="fatherOccupation" class="fatherOccupation">
+                        </div>
+
+                        <div class="col-sm-12 col-md-2 namer">
+                            <text  style="font-weight: bold">Mother's Name </text>
+                        </div>
+                        <div class="col-sm-12 col-md-5 parent-name-input">
+                            <text>Smt. :  </text>
+                            <input type="text" name="motherName" class="motherName">
+                        </div>
+                        <div class="col-sm-12 col-md-5 parent-occupation-input">
+                            <text>Occupation :  </text>
+                            <input type="text" name="motherOccupation" class="motherOccupation">
+                        </div>
+                    </div>
+
+                    </br>
+                    <div class="row branch-details-section">
+                        <div class="col-sm-12 col-md-4 branch-item">
+                            <text style="font-weight: bold">Branch : </text>
+                            <div class="item-selector">
+                                <select name="branch" id="branch-detail">
+                                    <option value="CSE">CSE</option>
+                                    <option value="ECE">ECE</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 branch-item">
+                            <text style="font-weight: bold">Minority Details : </text>
+                            <div class="item-selector">
+                                <select name="religion" id="branch-detail">
+                                    <option value="Muslim">Muslim</option>
+                                    <option value="Jain">Jain</option>
+                                    <option value="Christian">Christian</option>  
+                                    <option value="None">None</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 branch-item">
+                            <text style="font-weight: bold">Physically Disabled : </text>
+                            <div class="item-selector">
+                                <select name="Disabled" id="branch-detail">
+                                    <option value="YES">YES</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <text style="font-style: italic">( If physically disabled , please attach verification report Medical Committee of IIIT Nagpur )</text>
+                    </div>
+
+                    </br>
+                    <div class="row jee-main-detail">
+                        <div class="col-sm-12 col-md-12 jee-heading">
+                            <text style="font-weight: bold">JEE Main Details :</text>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 jee-main-table">
+                            <div class="row jee-table-item">
+                                <div class="col-sm-12 col-md-3 jee-text">
+                                    <text>Round of Allotment</text>
+                                </div>
+                                <div class="col-sm-12 col-md-9 jee-input">
+                                    <input type="text" name="allotmentRound">
+                                </div>
+                            </div>
+                            
+                            <div class="row jee-table-item">
+                                <div class="col-sm-12 col-md-3 jee-text">
+                                    <text>JEE Roll No</text>
+                                </div>
+                                <div class="col-sm-12 col-md-9 jee-input">
+                                    <input type="text" name="jeeRollno">
+                                </div>
+                            </div>
+
+                            <div class="row jee-table-item">
+                                <div class="col-sm-12 col-md-3 jee-text">
+                                    <text>JEE All India Rank Score</text>
+                                </div>
+                                <div class="col-sm-12 col-md-9 jee-input">
+                                    <div class="row jee-input-row">
+                                        <div class="col-sm-12 col-md-3 jee-item">
+                                            <text>Air : </text><input type="text" name="jeeAir">
+                                        </div>
+                                        
+                                        <div class="col-sm-12 col-md-3 jee-item">
+                                            <text>Mark : </text><input type="text" name="jeeMark">
+                                        </div>
+                                        <div class="col-sm-12 col-md-3 jee-item">
+                                            <text>Score : </text><input type="text" name="jeeScore">
+                                        </div>
+                                        <div class="col-sm-12 col-md-3 jee-item">
+                                            <text>Year : </text><input type="text" name="jeeyear">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row jee-table-item">
+                                <div class="col-sm-12 col-md-3 jee-text">
+                                    <text>Allotment Category</text>
+                                </div>
+                                <div class="col-sm-12 col-md-9">
+                                <div class="item-selector">
+                                    <select name="category1" id="category1">
+                                    
+                                        <option value="OP">OP</option>
+                                        <option value="SC">SC</option>
+                                        <option value="ST">ST</option>
+                                        <option value="OBC">OBC</option>
+                                        <option value="EWS">EWS</option>
+                                        <option value="PD">PD</option>
+                                    
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="row jee-table-item">
+                                <div class="col-sm-12 col-md-3 jee-text">
+                                    <text>Candidate Category</text>
+                                </div>
+                                <div class="col-sm-12 col-md-9">
+                                <div class="item-selector">
+                                    <select name="category2" id="category2">
+                                    
+                                        <option value="OP">OP</option>
+                                        <option value="SC">SC</option>
+                                        <option value="ST">ST</option>
+                                        <option value="OBC">OBC</option>
+                                        <option value="EWS">EWS</option>
+                                        <option value="PD">PD</option>
+                                    
+                                    </select>
+                                </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+
+                    </br>
+                    <div class="row fee-payment">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="row fee-payment-heading">
+                                <text style="font-weight: bold">Details of Fee Payment : </text>
+                            </div>
+                            <div class="row fee-payment-row">
+                                <div class="col-sm-12 col-md-1 detail">
+                                    <text>Sr. No.</text>
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail">
+                                    <text>Detail</text>
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail">
+                                    <text>DD/ECS No.</text>
+                                </div>
+                                <div class="col-sm-12 col-md-2 detail">
+                                    <text >Date</text>
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail fee-amount">
+                                    <text>Amount</text>
+                                </div>
+                            </div>
+
+                            <div class="row fee-payment-row">
+                                <div class="col-sm-12 col-md-1 detail">
+                                    <text>1</text>
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail">
+                                    <text>JoSSA 2019 counseling</text>
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail">
+                                    <!-- <text>DD/ECS No.</text> -->
+                                    <input type="text" name="dd1">
+                                </div>
+                                <div class="col-sm-12 col-md-2 detail">
+                                    <!-- <text>Date</text> -->
+                                    <input type="date" name="date1">
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail fee-amount">
+                                    <text>Rs.</text>
+                                    <input type="number" name="amount1">
+                                </div>
+                            </div>
+
+                            <div class="row fee-payment-row">
+                                <div class="col-sm-12 col-md-1 detail">
+                                    <text>2</text>
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail">
+                                    <text>At Institute Reporting for admission</text>
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail">
+                                    <!-- <text>DD/ECS No.</text> -->
+                                    <input type="text" name="dd2">
+                                </div>
+                                <div class="col-sm-12 col-md-2 detail">
+                                    <!-- <text>Date</text> -->
+                                    <input type="date" name="date2">
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail fee-amount">
+                                    <text>Rs.</text>
+                                    <input type="number" name="amount2">
+                                </div>
+                            </div>
+
+                            <div class="row fee-payment-row">
+                                <div class="col-sm-12 col-md-1 detail">
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail">
+                                    <text style="font-weight: bold">Total Amount</text>
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail">
+                                    <!-- <text>DD/ECS No.</text> -->
+                                    <!-- <input type="text" name="dd2"> -->
+                                </div>
+                                <div class="col-sm-12 col-md-2 detail">
+                                    <!-- <text>Date</text> -->
+                                    <!-- <input type="date" name="date2"> -->
+                                </div>
+                                <div class="col-sm-12 col-md-3 detail fee-amount">
+                                    <text>Rs.</text>
+                                    <input type="number" name="amount3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </br>
+                    
+                    <div class="row hostel-detail">
+                        <div class="col-sm-12 col-md-12 hostel-detail-col">
+                            <text>Whether Hostel Required :</text>
+                            <div class="item-selector ">
+                                <select name="hostelyn" id="hostelyn">
+                                    <option value="YES">YES</option>
+                                    <option value="NO">NO</option>
+                                </select> 
+                            </div>    
+                        </div>
+                    </div>
+
+                    </br>
+
+      
+                    <div class="row hostel-table">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="row hostel-table-row">
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>1) Seat Allotment Letter</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="SeatAllotment" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>7) Cast Certificate (As applicable to Res Category)</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select  name="CastCertificate" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>   
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2 hostel-col-up">
+
+                                </div>
+                            </div>
+
+                            <div class="row hostel-table-row">
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>2) JEE Rank Card</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="RankCard" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>8) Cast validity (if caste certificate issued by Maharashtra Govt.)</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="Castvalidity" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2 hostel-col-right">
+                
+                                </div>
+                            </div>
+
+                            <div class="row hostel-table-row">
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>3) Photo ID Proof</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="IDProof" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>9) Non-Creamy layer Certificate for OBC Category</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="layerCertificate" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2 hostel-col-right">
+                
+                                </div>
+                            </div>
+
+                            <div class="row hostel-table-row">
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>4) Certificate for proof of date of birth</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="proofofdate" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>10) Certificate for persons with disabilities</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="disabilities" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2 hostel-col-right">
+                
+                                </div>
+                            </div>
+
+                            <div class="row hostel-table-row">
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>5) Qualifying Examination Mark-Sheet</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="MarkSheet" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>11) Transfer Certificate</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="Transfer" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2 hostel-col-right">
+                
+                                </div>
+                            </div>
+
+                            <div class="row hostel-table-row">
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>6) Income Certificate (For EWS)</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="IncomeCertificate" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>12) Migration Certificate</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="MigrationCertificate" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2 hostel-col-right">
+                                    <text>Verifying official sign with date</text>
+                                </div>
+                            </div>
+
+                            <div class="row hostel-table-row">
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>13) Aadhaar Card</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="AadhaarCard" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 hostel-col">
+                                    <text>14) GAP Certificate (If applicable)</text>
+                                </div>
+                                <div class="col-sm-12 col-md-1 hostel-col">
+                                <div class="item-selector">
+                                    <select name="GAP" id="putyn">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2 hostel-col">
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </br>
+
+                    <div class="row address">
+                        <div class="col-sm-12 col-md-12">
+                            <text style="font-weight: bold">Address : </text>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12">
+                            <div class="row address-row">
+                                <div class="col-sm-12 col-md-6 address-box">
+                                    <text>Address for Correspondence</text>
+                                </div>
+                                <div class="col-sm-12 col-md-6 address-box">
+                                    <text>Permanent Address</text>
+                                </div>
+                            </div>
+                            <div class="row address-row">
+                                <div class="col-sm-12 col-md-6 address-box">
+                                    <input type="correspondence-address" name="correspondenceAddress">
+                                </div>
+                                <div class="col-sm-12 col-md-6 address-box">
+                                    <input type="permenant-address" name="permanentAddress">
+                                </div>
+                            </div>
+                            <div class="row address-row">
+                                <div class="col-sm-12 col-md-6 address-box">
+                                    <input type="correspondence-address" name="correspondenceAddress2">
+                                </div>
+                                <div class="col-sm-12 col-md-6 address-box">
+                                    <input type="permenant-address" name="permanentAddress2">
+                                </div>
+                            </div>
+                    
+                            <div class="row address-row">
+                                <div class="col-sm-12 col-md-6 address-box address-with-text">
+                                    <text style="font-weight: bold">CITY : </text>
+                                    <input type="correspondence-city" name="correspondenceCity">
+                                </div>
+                                <div class="col-sm-12 col-md-6 address-box address-with-text">
+                                    <text style="font-weight: bold">CITY : </text>
+                                    <input type="permanent-city" name="permanentCity">
+                                </div>
+                            </div>
+                            <div class="row address-row">
+                                <div class="col-sm-12 col-md-6 address-box address-with-text">
+                                    <text style="font-weight: bold">State : </text>
+                                    <input type="correspondence-state" name="correspondenceState">
+                                </div>
+                                <div class="col-sm-12 col-md-6 address-box address-with-text">
+                                    <text style="font-weight: bold">State : </text>
+                                    <input type="permanent-state" name="permanentState">
+                                </div>
+                            </div>
+                            <div class="row address-row">
+                                <div class="col-sm-12 col-md-6 address-box address-with-text">
+                                    <text style="font-weight: bold">PINCODE : </text>
+                                    <input type="correspondence-pincode" name="correspondencePincode">
+                                </div>
+                                <div class="col-sm-12 col-md-6 address-box address-with-text">
+                                    <text style="font-weight: bold">PINCODE : </text>
+                                    <input type="permanent-pincode" name="permanentPincode">
+                                </div>
+                            </div>
+                            <div class="row address-row">
+                                <div class="col-sm-12 col-md-6 address-box address-with-text">
+                                    <text style="font-weight: bold">Mobile No. : </text>
+                                    <input type="correspondence-mobile" name="correspondenceMobile">
+                                </div>
+                                <div class="col-sm-12 col-md-6 address-box address-with-text">
+                                    <text style="font-weight: bold">Mobile No. : </text>
+                                    <input type="permanent-mobile" name="permanentMobile">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </br>
+                    <br>
+                    <div class="row education">
+                        <div class="col-sm-12 col-md-12">
+                            <text style="font-weight: bold">Education : </text>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12">
+                            <div class="row education-row">
+                                <div class="col-sm-2 edu-col">
+                                    <text style="font-weight: bold">Class</text>
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <text style="font-weight: bold">Name of Board</text>
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <text style="font-weight: bold">Subject</text>
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <text style="font-weight: bold">Year of Passing</text>
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <text style="font-weight: bold">Marks Obtained</text>
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <text style="font-weight: bold">Percentage/Grade</text>
+                                </div>
+                            </div>
+
+                            <div class="row education-row">
+                                <div class="col-sm-2 edu-col">
+                                    <text style="font-weight: bold">10th / SSC</text>
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <!-- <text style="font-weight: bold">Name of Board</text> -->
+                                    <input type="board-name1" name="boardName1">
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <!-- <text style="font-weight: bold">Subject</text> -->
+                                    <input type="subject-1" name="subject1">
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <!-- <text style="font-weight: bold">Year of Passing</text> -->
+                                    <input type="yop-1" name="yop1">
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <!-- <text style="font-weight: bold">Marks Obtained</text> -->
+                                    <input type="marks-obtained1" name="marksObtained1">
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <!-- <text style="font-weight: bold">Percentage/Grade</text> -->
+                                    <input type="grade-1" name="grade1">
+                                </div>
+                            </div>
+
+                            <div class="row education-row">
+                                <div class="col-sm-2 edu-col">
+                                    <text style="font-weight: bold">12th / HSC</text>
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <!-- <text style="font-weight: bold">Name of Board</text> -->
+                                    <input type="board-name2" name="boardName2">
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <!-- <text style="font-weight: bold">Subject</text> -->
+                                    <input type="subject-2" name="subject2">
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <!-- <text style="font-weight: bold">Year of Passing</text> -->
+                                    <input type="yop-2" name="yop2">
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <!-- <text style="font-weight: bold">Marks Obtained</text> -->
+                                    <input type="marks-obtained2" name="marksObtained2">
+                                </div>
+                                <div class="col-sm-2 edu-col">
+                                    <!-- <text style="font-weight: bold">Percentage/Grade</text> -->
+                                    <input type="grade-2" name="grade2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </br>
+
+                    <div class="row scan-doc">
+                        <div class="col-sm-12 col-md-12">
+                            <text style="font-weight: bold">Scanned copies of documents uploaded? (Yes / No)</text>
+                        </div>
+                        <div class="col-sm-12 col-md-3 scan-item">
+                            <text style="font-weight: bold">10th Marksheet</text>
+                            <div class="item-selector">
+                            <select name="scanitem" id="scanItem">
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 scan-item">
+                            <text style="font-weight: bold">12th Marksheet</text>
+                            <div class="item-selector">
+                            <select name="scanitem2" id="scanItem">
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 scan-item">
+                            <text style="font-weight: bold">Aadhar</text>
+                            <div class="item-selector">
+                            <select name="scanitem3" id="scanItem">
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 scan-item">
+                            <text style="font-weight: bold">Category Certificate</text>
+                            <div class="item-selector">
+                            <select name="scanitem4" id="scanItem">
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 scan-item">
+                            <text style="font-weight: bold">PWD Certificate</text>
+                            <div class="item-selector">
+                            <select name="scanitem5" id="scanItem">
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 scan-item">
+                            <text style="font-weight: bold">EWS (If applicable)</text>
+                            <div class="item-selector">
+                            <select name="scanitem6" id="scanItem">
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                    </div>
+                    </div>
+
+                    </br>
+
+                    <div class="row disease">
+                        <div class="col-sm-12 col-md-12">
+                            <text style="font-weight: bold">Whether suffering from any chronic disease: Yes / No</text>
+                            <div class="item-selector">
+                            <select name="sufferitem" id="suffer">
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12">
+                            <text>If yes, please provide detailed information</text>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 disease-input">
+                            <input type="text" name="diseaseText">
+                        </div>
+                    </div>
+
+                    </br>
+
+                    <div class="row declaration">
+                        <div class="col-sm-12 col-md-12">
+                            <text style="font-weight: bold">Declaration by the applicant:</text>
+                        </div>
+                        <div class="col-sm-12 col-md-12">
+                            <text>I certified that all information provided by me in this form is correct to the best of my knowledge and belief.
+                                I understand that any willful misrepresentation of facts will result in my dismissal from the Institute. If
+                                admitted,I shall abide by all rules and regulations of the Institute.</text>
+                        </div>
+                        <div class="col-sm-12 col-md-12 declaration-box">
+                            <text style="font-weight: bold; margin-right: 15px">Date : </text>
+                            <input type="date" name="declarationDate">
+                        </div>
+                        <div class="col-sm-12 col-md-12 declaration-box">
+                            <text style="font-weight: bold; margin-right: 15px">Signature of the Applicant : </text>
+                            <input type="text" name="declarationSignature">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center"> 
+                    <button class="btn btn-success" type="submit">Submit</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
